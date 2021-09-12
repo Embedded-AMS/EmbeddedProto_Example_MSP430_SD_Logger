@@ -44,22 +44,22 @@ class SDWriteBuffer : public ::EmbeddedProto::WriteBufferInterface
     ~SDWriteBuffer() override = default;
 
     //! \see ::EmbeddedProto::WriteBufferInterface::clear()
-    virtual void clear() override;
+    void clear() override;
 
     //! \see ::EmbeddedProto::WriteBufferInterface::get_size()
-    virtual uint32_t get_size() const override;
+    uint32_t get_size() const override;
 
     //! \see ::EmbeddedProto::WriteBufferInterface::get_max_size()
-    virtual uint32_t get_max_size() const override;
+    uint32_t get_max_size() const override;
 
     //! \see ::EmbeddedProto::WriteBufferInterface::get_available_size()
-    virtual uint32_t get_available_size() const override;
+    uint32_t get_available_size() const override;
 
     //! \see ::EmbeddedProto::WriteBufferInterface::push()
-    virtual bool push(const uint8_t byte) override;
+    bool push(const uint8_t byte) override;
 
     //! \see ::EmbeddedProto::WriteBufferInterface::push()
-    virtual bool push(const uint8_t* bytes, const uint32_t length) override;
+    bool push(const uint8_t* bytes, const uint32_t length) override;
 
     //! Return a pointer to the data array.
     uint8_t* get_data();

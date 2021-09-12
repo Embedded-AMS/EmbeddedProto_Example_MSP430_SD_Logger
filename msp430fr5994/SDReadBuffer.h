@@ -56,7 +56,7 @@ class SDReadBuffer : public ::EmbeddedProto::ReadBufferInterface
     void advance() override;
 
     /** \see ::EmbeddedProto::ReadBufferInterface::advance(const uint32_t N) */
-    //void advance(const uint32_t N) override;
+    void advance(const uint32_t N) override;
 
     /** \see ::EmbeddedProto::ReadBufferInterface::pop() */
     bool pop(uint8_t& byte) override;

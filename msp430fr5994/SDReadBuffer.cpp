@@ -29,6 +29,7 @@
  */
 
 #include "SDReadBuffer.h"
+#include <algorithm>
 
 SDReadBuffer::SDReadBuffer()
   : data_{0},
@@ -60,13 +61,13 @@ bool SDReadBuffer::peek(uint8_t& byte) const
 
 void SDReadBuffer::advance()
 {
-  ++read_index_;
+   advance(1U);
 }
 
-//void SDReadBuffer::advance(const uint32_t N)
-//{
-//  read_index_ += N;
-//}
+void SDReadBuffer::advance(const uint32_t N)
+{
+  read_index_ = std::min(read_index_ + N, write_index_);
+}
 
 bool SDReadBuffer::pop(uint8_t& byte)
 {
