@@ -64,9 +64,9 @@ void SDReadBuffer::advance()
    advance(1U);
 }
 
-void SDReadBuffer::advance(const uint32_t N)
+void SDReadBuffer::advance(const uint32_t n_bytes)
 {
-  read_index_ = std::min(read_index_ + N, write_index_);
+  read_index_ = std::min(read_index_ + n_bytes, write_index_);
 }
 
 bool SDReadBuffer::pop(uint8_t& byte)
