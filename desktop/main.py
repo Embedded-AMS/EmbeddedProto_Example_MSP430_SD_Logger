@@ -45,10 +45,10 @@ if __name__ == "__main__":
         log = sd_messages_pb2.Log()
         log.ParseFromString(line)
     
-        print("Field 1: " + str(log.field1))
-        print("Field 2: " + str(log.field2))
-        print("Field 3: " + str(log.field3))
-        print("Field 4: " + str(log.field4))
-        print("Field 5: " + str(log.field5))
+        print("count: " + str(log.count))
+        print("range: " + str(log.range))
+        print("active: " + str(log.active))
+        print("temperature: " + str(log.temperature))
+        print("speed: " + str(log.speed))
         print("\n")
 

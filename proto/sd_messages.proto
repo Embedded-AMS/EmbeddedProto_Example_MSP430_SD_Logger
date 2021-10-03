@@ -34,12 +34,11 @@ syntax = "proto3";
 
 message Log 
 {
-
-  int32 field1 = 1;
-  uint32 field2 = 2;
-  bool field3 = 3;
-  float field4 = 4;
-  double field5 = 5; 
+  uint32 count        = 1;
+  int32  range        = 2;
+  bool   active       = 3;
+  float  temperature  = 4;
+  double speed        = 5; 
 }
 
 

@@ -67,6 +67,7 @@ bool Success = true;
 SDReadBuffer read_buffer;
 SDWriteBuffer write_buffer;
 Log sd_log;
+uint32_t counter = 0;
 
 //-----------------------------------------------------------------------------
 int _system_pre_init(void)
@@ -91,15 +92,16 @@ float get_random_float(float upper_limit)
     return (float)rand()/(float)(RAND_MAX/upper_limit);
 }
 
+double get_random_double(double upper_limit)
+{
+    return (double)rand()/(double)(RAND_MAX/upper_limit);
+}
+
 int32_t get_random_int32()
 {
     return (int32_t)rand();
 }
 
-uint32_t get_random_uint32()
-{
-    return (uint32_t)rand();
-}
 
 /*
  * main.c
@@ -124,12 +126,14 @@ int main(void) {
         _no_operation();
     }
 
-    while(Success){
-        sd_log.set_field1(get_random_int32());
-        sd_log.set_field2(get_random_uint32());
-        sd_log.set_field3(true);
-        sd_log.set_field4(get_random_float(10.0));
-        sd_log.set_field5(std::numeric_limits<double>::max());
+    while(Success) {
+        sd_log.set_count(counter);
+        sd_log.set_range(get_random_int32());
+        sd_log.set_active(!sd_log.get_active());
+        sd_log.set_temperature(get_random_float(20.0) + 15.0);
+        sd_log.set_speed(get_random_double(120.0) - 60.0);
+
+        ++counter;
 
         auto serialization_status = sd_log.serialize(write_buffer);
         if(::EmbeddedProto::Error::NO_ERRORS == serialization_status)
@@ -137,7 +141,10 @@ int main(void) {
             // Set Success true to start
             Success = true;
 
+            // Add a newline at the end of the data. This is only done for a simple example.
+            // This only works if the new line character is not contained in the actual data.
             write_buffer.push('\n');
+
             SDCard_status = write_SDCard(write_buffer.get_data(), write_buffer.get_size());
 
             // Check for SDCard and file errors
@@ -149,16 +156,19 @@ int main(void) {
 
             if(Success == true)
             {
-
                 GPIO_setOutputHighOnPin(GPIO_PORT_P1, GPIO_PIN1);  // Turn on GREEN LED
             }
             else
+            {
                 GPIO_setOutputHighOnPin(GPIO_PORT_P1, GPIO_PIN0);  // Turn on RED LED
+            }
 
         }
         write_buffer.clear();
-        __bis_SR_register(LPM3_bits | GIE);       // Enter LPM3
-    }
+
+        // Enter standby mode for 5 sec.
+        __bis_SR_register(LPM3_bits | GIE);
+    }// End of while loop
 
     // Forever wait
     while(1);
