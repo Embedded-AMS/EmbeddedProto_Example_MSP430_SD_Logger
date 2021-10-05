@@ -156,7 +156,7 @@ int main(void) {
 
             if(Success == true)
             {
-                GPIO_setOutputHighOnPin(GPIO_PORT_P1, GPIO_PIN1);  // Turn on GREEN LED
+                GPIO_toggleOutputOnPin(GPIO_PORT_P1, GPIO_PIN1);  // Turn on GREEN LED
             }
             else
             {
