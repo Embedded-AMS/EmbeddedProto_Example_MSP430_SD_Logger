@@ -243,7 +243,7 @@ void init_timer()
     Timer_A_initUpModeParam param = {0};
     param.clockSource = TIMER_A_CLOCKSOURCE_ACLK;
     param.clockSourceDivider = TIMER_A_CLOCKSOURCE_DIVIDER_32;
-    param.timerPeriod = 5120;
+    param.timerPeriod = 1024;
     param.timerInterruptEnable_TAIE = TIMER_A_TAIE_INTERRUPT_DISABLE;
     param.captureCompareInterruptEnable_CCR0_CCIE =
             TIMER_A_CCIE_CCR0_INTERRUPT_ENABLE;
