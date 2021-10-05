@@ -36,19 +36,29 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('-p', '--path', default="", help='The path to the logged embeddedproto messages')
     args = parser.parse_args()
-
-    f = open(args.path, 'rb')
     
-    for line in f:
-        
-        line = line.rstrip()
-        log = sd_messages_pb2.Log()
-        log.ParseFromString(line)
+    with open(args.path, 'rb') as f:
+        data = f.read()
     
-        print("count: " + str(log.count))
-        print("range: " + str(log.range))
-        print("active: " + str(log.active))
-        print("temperature: " + str(log.temperature))
-        print("speed: " + str(log.speed))
-        print("\n")
-
+        # Split the data at the delimter combination of ETB and new line.
+        data = data.split(b'\x17\n')
+    
+        print(data)
+    
+        prev_count = -1
+    
+        for d in data:
+            
+            log_msg = sd_messages_pb2.Log()
+            log_msg.ParseFromString(d)
+         
+            print("count: " + str(log_msg.count))
+            print("range: " + str(log_msg.range))
+            print("active: " + str(log_msg.active))
+            print("temperature: " + str(log_msg.temperature))
+            print("speed: " + str(log_msg.speed))
+            print("\n")
+       
+            if (prev_count + 1) != log_msg.count:
+                break;
+            prev_count = log_msg.count

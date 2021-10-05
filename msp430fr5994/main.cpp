@@ -141,9 +141,10 @@ int main(void) {
             // Set Success true to start
             Success = true;
 
-            // Add a newline at the end of the data. This is only done for a simple example.
-            // This only works if the new line character is not contained in the actual data.
-            write_buffer.push('\n');
+            // To signal the end of a log message add an ETB byte and a newline at the end of 
+            // the data. 
+            write_buffer.push(0x17); // ASCII End of transmission block.
+            write_buffer.push('\n'); // New line
 
             SDCard_status = write_SDCard(write_buffer.get_data(), write_buffer.get_size());
 
