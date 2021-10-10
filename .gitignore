@@ -1,0 +1,13 @@
+# Ignore the generated source code.
+msp430fr5994/generated
+desktop/generated
+
+# Ignore build results
+msp430fr5994/Debug
+msp430fr5994/Release
+
+# Ignore the python virtualenv folder
+desktop/venv
+
+# Ignore the pycharm project folder.
+desktop/.idea
