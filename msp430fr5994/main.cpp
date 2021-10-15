@@ -167,7 +167,7 @@ int main(void) {
         }
         write_buffer.clear();
 
-        // Enter standby mode for 5 sec.
+        // Enter standby mode for one sec.
         __bis_SR_register(LPM3_bits | GIE);
     }// End of while loop
 
