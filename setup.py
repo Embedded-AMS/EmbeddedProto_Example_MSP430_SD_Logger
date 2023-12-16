@@ -184,7 +184,7 @@ if __name__ == "__main__":
             pass
 
         try:
-            os.remove("./nucleo-f446re/generated/sd_messages.h")
+            os.remove("./msp430fr5994/generated/sd_messages.h")
         except FileNotFoundError:
             # This exception we can safely ignore as it means the file was not there. In that case we do not have to remove
             # it.
