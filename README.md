@@ -22,7 +22,7 @@ The desktop program is a simple python script. This script simply reads the stor
 
 # Installation
 
-1. Install Code Composer Studio (version 8.2.0) if you have not already.
+1. Install Code Composer Studio (tested with version 8.2.0 and 12.5.0) if you have not already.
 2. Install the dependencies required by Embedded Proto. They are listed [here](https://github.com/Embedded-AMS/EmbeddedProto).
 3. Checkout this example repository including the submodule of Embedded Proto: `git clone --recursive https://github.com/Embedded-AMS/EmbeddedProto_Example_MSP430_SD.git`.
 5. Setup the environment required for Embedded Proto and the desktop script by running the setup script: `python ./setup.py`.
