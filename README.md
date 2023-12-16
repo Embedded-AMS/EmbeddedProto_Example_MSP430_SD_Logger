@@ -1,8 +1,8 @@
 
-![alt text](https://embeddedproto.com/wp-content/uploads/2020/03/Embedded-Proto-e1583834233386.png "Embedded Proto Logo")
+![alt text](https://embeddedproto.com/wp-content/uploads/2022/04/Embedded_Proto.png "Embedded Proto Logo")
 
 
-Copyrights 2020-2021 Embedded AMS B.V. Amsterdam, [www.EmbeddedAMS.nl](https://www.EmbeddedAMS.nl), [info@EmbeddedAMS.nl](mailto:info@EmbeddedAMS.nl)
+Copyrights 2020-2024 Embedded AMS B.V. Hoorn, [www.EmbeddedAMS.nl](https://www.EmbeddedAMS.nl), [info@EmbeddedAMS.nl](mailto:info@EmbeddedAMS.nl)
 
 
 Looking for a more elaborate description of this example? Please visit: SD card logging example link
@@ -25,10 +25,11 @@ The desktop program is a simple python script. This script simply reads the stor
 1. Install Code Composer Studio (version 8.2.0) if you have not already.
 2. Install the dependencies required by Embedded Proto. They are listed [here](https://github.com/Embedded-AMS/EmbeddedProto).
 3. Checkout this example repository including the submodule of Embedded Proto: `git clone --recursive https://github.com/Embedded-AMS/EmbeddedProto_Example_MSP430_SD.git`.
-4. Make setup.sh and generate_source_files.sh executable. `chmod +x setup.sh` and `chmod +x generate_source_files.sh`
-5. Setup the environment required for Embedded Proto and the desktop script by running the setup script: `./setup.sh`.
+5. Setup the environment required for Embedded Proto and the desktop script by running the setup script: `python ./setup.py`.
 
-The setup script already does it for you but you can regenerate the source code using the `./generate_source_files.sh` script. This is required when you have changed the \*.proto file.
+The setup script already does it for you but you can regenerate the source code using the `python ./setup.py --generate` script. This is required when you have changed the \*.proto file. 
+
+You can use the `python ./setup.py --help` parameter to get more information on the options of the setup script.
 
 
 # Running the code
